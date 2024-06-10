@@ -1,0 +1,193 @@
+---
+title: HTML & Javascript
+---
+
+## Standard
+
+You can get the standard HTML and Javascript code by clicking on the "HTML & Javascript" button in the "Share" tab of your chatbot.
+
+There, you can change the container dimensions. Here is a code example:
+
+```html
+<script type="module">
+  import Chatbot from 'https://cdn.jsdelivr.net/gh/buildchat-bot/embeds@v1.1/js/web.js'
+
+  Chatbot.initStandard({
+    typebot: 'my-chatbot',
+  })
+</script>
+
+<chatbot-standard style="width: 100%; height: 600px; "></chatbot-standard>
+```
+
+This code is creating a container with a 100% width (will match parent width) and 600px height.
+
+### Multiple bots
+
+If you have different bots on the same page you will have to make them distinct with an additional `id` prop:
+
+```html
+<script type="module">
+  import Chatbot from 'https://cdn.jsdelivr.net/gh/buildchat-bot/embeds@v1.1/js/web.js'
+
+  Chatbot.initStandard({
+    id: 'bot1'
+    typebot: 'my-chatbot',
+  })
+
+  Chatbot.initStandard({
+    id: 'bot2'
+    typebot: 'my-chatbot-2',
+  })
+</script>
+
+<chatbot-standard
+  id="bot1"
+  style="width: 100%; height: 600px; "
+></chatbot-standard>
+...
+<chatbot-standard
+  id="bot2"
+  style="width: 100%; height: 600px; "
+></chatbot-standard>
+```
+
+## Popup
+
+You can get the popup HTML and Javascript code by clicking on the "HTML & Javascript" button in the "Share" tab of your chatbot.
+
+Here is an example:
+
+```html
+<script type="module">
+  import Chatbot from 'https://cdn.jsdelivr.net/gh/buildchat-bot/embeds@v1.1/js/web.js'
+
+  Chatbot.initPopup({
+    typebot: 'my-chatbot',
+    apiHost: 'http://localhost:3001',
+    autoShowDelay: 3000,
+  })
+</script>
+```
+
+This code will automatically trigger the popup window after 3 seconds.
+
+## Bubble
+
+You can get the bubble HTML and Javascript code by clicking on the "HTML & Javascript" button in the "Share" tab of your chatbot.
+
+Here is an example:
+
+```html
+<script type="module">
+  import Chatbot from 'https://cdn.jsdelivr.net/gh/buildchat-bot/embeds@v1.1/js/web.js'
+
+  Chatbot.initBubble({
+    typebot: 'my-chatbot',
+    previewMessage: {
+      message: 'I have a question for you!',
+      autoShowDelay: 5000,
+      avatarUrl: 'https://avatars.githubusercontent.com/u/171757809?v=4',
+    },
+    theme: {
+      button: { backgroundColor: '#007AFF', iconColor: '#FFFFFF' },
+      previewMessage: { backgroundColor: '#ffffff', textColor: 'black' },
+      chatWindow: { backgroundColor: '#ffffff', maxWidth: '100%' },
+    },
+  })
+</script>
+```
+
+This code will show the bubble and let a preview message appear after 5 seconds.
+
+### Custom button position
+
+You can move the button with some custom CSS on your website. For example, you can place the bubble button higher with the following CSS:
+
+```css
+chatbot-bubble::part(button) {
+  bottom: 60px;
+}
+
+chatbot-bubble::part(bot) {
+  bottom: 140px;
+  height: calc(100% - 140px)
+}
+```
+
+If you have a preview message, you'll also have to manually position it:
+
+```css
+chatbot-bubble::part(preview-message) {
+  bottom: 140px;
+}
+```
+
+## Commands
+
+Here are the commands you can use to trigger your embedded typebot:
+
+- `Chatbot.open()`: Open popup or bubble
+- `Chatbot.close()`: Close popup or bubble
+- `Chatbot.toggle()`: Toggle the bubble or popup open/close state,
+- `Chatbot.showPreviewMessage()`: Show preview message from the bubble,
+- `Chatbot.hidePreviewMessage()`: Hide preview message from the bubble,
+- `Chatbot.setPrefilledVariables(...)`: Set prefilled variables.
+  Example:
+
+  ```js
+  Chatbot.setPrefilledVariables({
+    Name: 'Jhon',
+    Email: 'john@gmail.com',
+  })
+  ```
+
+  For more information, check out [Additional configuration](#additional-configuration).
+
+- `Chatbot.setInputValue(...)`: Set the value in the currently displayed input.
+
+You can bind these commands on a button element, for example:
+
+```html
+<button onclick="Chatbot.open()">Contact us</button>
+```
+
+## Callbacks
+
+If you need to trigger events on your parent website when the user interact with the bot, you can use the following callbacks:
+
+```js
+Chatbot.initStandard({
+  typebot: 'my-chatbot',
+  onNewInputBlock: (inputBlock) => {
+    console.log('New input block displayed', inputBlock.id)
+  },
+  onAnswer: (answer) => {
+    console.log('Answer received', answer.message, answer.blockId)
+  },
+  onInit: () => {
+    console.log('Bot initialized')
+  },
+  onEnd: () => {
+    console.log('Bot ended')
+  },
+})
+```
+
+## Additional configuration
+
+You can prefill the bot variable values in your embed code by adding the `prefilledVariables` option. Here is an example:
+
+```js
+Chatbot.initStandard({
+  typebot: 'my-chatbot',
+  prefilledVariables: {
+    'Current URL': 'https://my-site/account',
+    'User name': 'John Doe',
+  },
+})
+```
+
+It will prefill the `Current URL` variable with "https://my-site/account" and the `User name` variable with "John Doe". More info about variables: [here](/editor/variables).
+
+Note that if your site URL contains query params (i.e. https://buildchat.bot?User%20name=John%20Doe), the variables will automatically be injected to the chatbot. So you don't need to manually transfer query params to the bot embed configuration.

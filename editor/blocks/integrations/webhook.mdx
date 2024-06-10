@@ -1,0 +1,42 @@
+---
+title: HTTP Request
+---
+
+The HTTP Request block allows you to send an HTTP request to a 3rd party service. This is useful to send information from the bot to another service or to fetch information from another service and use it in the bot.
+
+## Make an API request and fetch data
+
+This gets more technical as you'll need to know more about HTTP request parameters.
+
+Lots of services offer an API. They also, most likely have an API documentation. Depending on the parameters you are giving the HTTP request block, it should return different info from the 3rd party service.
+
+## Custom body
+
+You can set a custom body with your collected variables. Here is a working example:
+
+```json
+{
+  "name": "{{Name}}",
+  "email": "{{Email}}"
+}
+```
+
+## Call a Webhook URL
+
+Your 3rd party service (Make.com, Zapier, etc) is giving you a Webhook URL.
+
+You only have to paste this URL in the Webhook block and click on "Test the request". By default the 3rd party service will receive a snapshot of what the bot could send.
+
+You can also decide to customize the request sent to the 3rd party service.
+
+## Timeout
+
+By default, the Webhook block will wait 10 seconds for the 3rd party service to respond. If it doesn't respond in time, the block will fail. You can customize this timeout value in the "Advanced params" section of your Webhook block settings.
+
+## Troubleshooting
+
+The Webhook block request fail or didn't seem to trigger? Make sure to check the [logs](/results/overview#logs). If you still can't figure out what went wrong, send us a message using the chat button directly in the tool 👍
+
+### Webhook is not executed in the right order?
+
+That is expected, Chatbot actually computes all the blocks between each input blocks from a server before displaying anything.
