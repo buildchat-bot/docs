@@ -14,7 +14,7 @@ Head over to the Share tab of your bot and click on the Webflow button to get th
 ```js
 document.getElementById('BUTTON_ID').addEventListener('click', (event) => {
   event.preventDefault()
-  Typebot.open()
+  Buildchatbot.open()
 })
 ```
 
@@ -27,17 +27,17 @@ It should look like:
   import Chatbot from 'https://cdn.jsdelivr.net/gh/buildchat-bot/embeds@v1.1/js/web.js'
 
   Chatbot.initPopup({
-    typebot: 'my-chatbot',
+    buildchatbot: 'my-chatbot',
   })
 
   document.getElementById('BUTTON_ID_1').addEventListener('click', (event) => {
     event.preventDefault()
-    Typebot.open()
+    Buildchatbot.open()
   })
 
   document.getElementById('BUTTON_ID_2').addEventListener('click', (event) => {
     event.preventDefault()
-    Typebot.open()
+    Buildchatbot.open()
   })
 </script>
 ```

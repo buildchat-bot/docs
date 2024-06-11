@@ -13,10 +13,10 @@
     "url": "https://docs.buildchat.bot/api-reference"
   },
   "paths": {
-    "/v1/chatbots/{typebotId}/linkedTypebots": {
+    "/v1/chatbots/{buildchatbotId}/linkedBuildchatbots": {
       "get": {
-        "operationId": "getLinkedTypebots",
-        "summary": "Get linked typebots",
+        "operationId": "getLinkedBuildchatbots",
+        "summary": "Get linked buildchatbots",
         "tags": ["Build Chatbot"],
         "security": [
           {
@@ -26,7 +26,7 @@
         "parameters": [
           {
             "in": "path",
-            "name": "typebotId",
+            "name": "buildchatbotId",
             "schema": {
               "type": "string"
             },
@@ -41,7 +41,7 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "typebots": {
+                    "buildchatbots": {
                       "type": "array",
                       "items": {
                         "oneOf": [
@@ -618,12 +618,12 @@
                                               },
                                               "type": {
                                                 "type": "string",
-                                                "enum": ["Typebot link"]
+                                                "enum": ["Buildchatbot link"]
                                               },
                                               "options": {
                                                 "type": "object",
                                                 "properties": {
-                                                  "typebotId": {
+                                                  "buildchatbotId": {
                                                     "type": "string"
                                                   },
                                                   "groupId": {
@@ -2362,7 +2362,7 @@
                       }
                     }
                   },
-                  "required": ["typebots"]
+                  "required": ["buildchatbots"]
                 }
               }
             }
@@ -2420,7 +2420,7 @@
         }
       }
     },
-    "/v1/chatbots/{typebotId}/analytics/inDepthData": {
+    "/v1/chatbots/{buildchatbotId}/analytics/inDepthData": {
       "get": {
         "operationId": "analytics-getInDepthAnalyticsData",
         "summary": "List total answers in blocks and off-default paths visited edges",
@@ -2433,7 +2433,7 @@
         "parameters": [
           {
             "in": "path",
-            "name": "typebotId",
+            "name": "buildchatbotId",
             "schema": {
               "type": "string"
             },
@@ -2564,7 +2564,7 @@
         }
       }
     },
-    "/v1/chatbots/{typebotId}/analytics/stats": {
+    "/v1/chatbots/{buildchatbotId}/analytics/stats": {
       "get": {
         "operationId": "analytics-getStats",
         "summary": "Get results stats",
@@ -2577,7 +2577,7 @@
         "parameters": [
           {
             "in": "path",
-            "name": "typebotId",
+            "name": "buildchatbotId",
             "schema": {
               "type": "string"
             },
@@ -3416,7 +3416,7 @@
     },
     "/v1/chatbots": {
       "post": {
-        "operationId": "typebot-createTypebot",
+        "operationId": "buildchatbot-createBuildchatbot",
         "summary": "Create a chatbot",
         "tags": ["Build Chatbot"],
         "security": [
@@ -3434,7 +3434,7 @@
                   "workspaceId": {
                     "type": "string"
                   },
-                  "typebot": {
+                  "buildchatbot": {
                     "type": "object",
                     "properties": {
                       "name": {
@@ -3598,7 +3598,7 @@
                     }
                   }
                 },
-                "required": ["workspaceId", "typebot"]
+                "required": ["workspaceId", "buildchatbot"]
               }
             }
           }
@@ -3611,11 +3611,11 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "typebot": {
-                      "$ref": "#/components/schemas/typebotV6"
+                    "buildchatbot": {
+                      "$ref": "#/components/schemas/buildchatbotV6"
                     }
                   },
-                  "required": ["typebot"]
+                  "required": ["buildchatbot"]
                 }
               }
             }
@@ -3663,7 +3663,7 @@
         }
       },
       "get": {
-        "operationId": "typebot-listTypebots",
+        "operationId": "buildchatbot-listBuildchatbots",
         "summary": "List chatbots",
         "tags": ["Build Chatbot"],
         "security": [
@@ -3698,7 +3698,7 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "typebots": {
+                    "buildchatbots": {
                       "type": "array",
                       "items": {
                         "type": "object",
@@ -3713,7 +3713,7 @@
                           "id": {
                             "type": "string"
                           },
-                          "publishedTypebotId": {
+                          "publishedBuildchatbotId": {
                             "type": "string"
                           }
                         },
@@ -3721,7 +3721,7 @@
                       }
                     }
                   },
-                  "required": ["typebots"]
+                  "required": ["buildchatbots"]
                 }
               }
             }
@@ -3779,9 +3779,9 @@
         }
       }
     },
-    "/v1/chatbots/{typebotId}": {
+    "/v1/chatbots/{buildchatbotId}": {
       "patch": {
-        "operationId": "typebot-updateTypebot",
+        "operationId": "buildchatbot-updateBuildchatbot",
         "summary": "Update a chatbot",
         "tags": ["Build Chatbot"],
         "security": [
@@ -3792,11 +3792,11 @@
         "parameters": [
           {
             "in": "path",
-            "name": "typebotId",
-            "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)",
+            "name": "buildchatbotId",
+            "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-buildchatbotid)",
             "schema": {
               "type": "string",
-              "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)"
+              "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-buildchatbotid)"
             },
             "required": true
           }
@@ -3808,7 +3808,7 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "typebot": {
+                  "buildchatbot": {
                     "anyOf": [
                       {
                         "type": "object",
@@ -3990,7 +3990,7 @@
                             "type": "string"
                           }
                         },
-                        "title": "Typebot V6"
+                        "title": "Buildchatbot V6"
                       },
                       {
                         "type": "object",
@@ -4574,12 +4574,12 @@
                                           },
                                           "type": {
                                             "type": "string",
-                                            "enum": ["Typebot link"]
+                                            "enum": ["Buildchatbot link"]
                                           },
                                           "options": {
                                             "type": "object",
                                             "properties": {
-                                              "typebotId": {
+                                              "buildchatbotId": {
                                                 "type": "string"
                                               },
                                               "groupId": {
@@ -6350,12 +6350,12 @@
                             "type": "string"
                           }
                         },
-                        "title": "Typebot V5"
+                        "title": "Buildchatbot V5"
                       }
                     ]
                   }
                 },
-                "required": ["typebot"]
+                "required": ["buildchatbot"]
               }
             }
           }
@@ -6368,11 +6368,11 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "typebot": {
-                      "$ref": "#/components/schemas/typebotV6"
+                    "buildchatbot": {
+                      "$ref": "#/components/schemas/buildchatbotV6"
                     }
                   },
-                  "required": ["typebot"]
+                  "required": ["buildchatbot"]
                 }
               }
             }
@@ -6430,7 +6430,7 @@
         }
       },
       "get": {
-        "operationId": "typebot-getTypebot",
+        "operationId": "buildchatbot-getBuildchatbot",
         "summary": "Get a chatbot",
         "tags": ["Build Chatbot"],
         "security": [
@@ -6441,11 +6441,11 @@
         "parameters": [
           {
             "in": "path",
-            "name": "typebotId",
-            "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)",
+            "name": "buildchatbotId",
+            "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-buildchatbotid)",
             "schema": {
               "type": "string",
-              "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)"
+              "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-buildchatbotid)"
             },
             "required": true
           },
@@ -6468,22 +6468,22 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "typebot": {
+                    "buildchatbot": {
                       "oneOf": [
                         {
-                          "$ref": "#/components/schemas/typebotV6"
+                          "$ref": "#/components/schemas/buildchatbotV6"
                         },
                         {
-                          "$ref": "#/components/schemas/typebotV5"
+                          "$ref": "#/components/schemas/buildchatbotV5"
                         }
                       ],
                       "discriminator": {
                         "propertyName": "version",
                         "mapping": {
-                          "3": "#/components/schemas/typebotV5",
-                          "4": "#/components/schemas/typebotV5",
-                          "5": "#/components/schemas/typebotV5",
-                          "6": "#/components/schemas/typebotV6"
+                          "3": "#/components/schemas/buildchatbotV5",
+                          "4": "#/components/schemas/buildchatbotV5",
+                          "5": "#/components/schemas/buildchatbotV5",
+                          "6": "#/components/schemas/buildchatbotV6"
                         }
                       }
                     },
@@ -6492,7 +6492,7 @@
                       "enum": ["guest", "read", "write"]
                     }
                   },
-                  "required": ["typebot", "currentUserMode"]
+                  "required": ["buildchatbot", "currentUserMode"]
                 }
               }
             }
@@ -6550,7 +6550,7 @@
         }
       },
       "delete": {
-        "operationId": "typebot-deleteTypebot",
+        "operationId": "buildchatbot-deleteBuildchatbot",
         "summary": "Delete a chatbot",
         "tags": ["Build Chatbot"],
         "security": [
@@ -6561,11 +6561,11 @@
         "parameters": [
           {
             "in": "path",
-            "name": "typebotId",
-            "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)",
+            "name": "buildchatbotId",
+            "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-buildchatbotid)",
             "schema": {
               "type": "string",
-              "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)"
+              "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-buildchatbotid)"
             },
             "required": true
           }
@@ -6641,9 +6641,9 @@
         }
       }
     },
-    "/v1/chatbots/{typebotId}/publishedTypebot": {
+    "/v1/chatbots/{buildchatbotId}/publishedBuildchatbot": {
       "get": {
-        "operationId": "typebot-getPublishedTypebot",
+        "operationId": "buildchatbot-getPublishedBuildchatbot",
         "summary": "Get published chatbot",
         "tags": ["Build Chatbot"],
         "security": [
@@ -6654,11 +6654,11 @@
         "parameters": [
           {
             "in": "path",
-            "name": "typebotId",
-            "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)",
+            "name": "buildchatbotId",
+            "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-buildchatbotid)",
             "schema": {
               "type": "string",
-              "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)"
+              "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-buildchatbotid)"
             },
             "required": true
           },
@@ -6681,23 +6681,23 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "publishedTypebot": {
+                    "publishedBuildchatbot": {
                       "nullable": true,
                       "oneOf": [
                         {
-                          "$ref": "#/components/schemas/publicTypebotV6"
+                          "$ref": "#/components/schemas/publicBuildchatbotV6"
                         },
                         {
-                          "$ref": "#/components/schemas/publicTypebotV5"
+                          "$ref": "#/components/schemas/publicBuildchatbotV5"
                         }
                       ],
                       "discriminator": {
                         "propertyName": "version",
                         "mapping": {
-                          "3": "#/components/schemas/publicTypebotV5",
-                          "4": "#/components/schemas/publicTypebotV5",
-                          "5": "#/components/schemas/publicTypebotV5",
-                          "6": "#/components/schemas/publicTypebotV6"
+                          "3": "#/components/schemas/publicBuildchatbotV5",
+                          "4": "#/components/schemas/publicBuildchatbotV5",
+                          "5": "#/components/schemas/publicBuildchatbotV5",
+                          "6": "#/components/schemas/publicBuildchatbotV6"
                         }
                       }
                     },
@@ -6707,7 +6707,7 @@
                       "description": "Provides the version the published bot was migrated from if `migrateToLatestVersion` is set to `true`."
                     }
                   },
-                  "required": ["publishedTypebot"]
+                  "required": ["publishedBuildchatbot"]
                 }
               }
             }
@@ -6765,9 +6765,9 @@
         }
       }
     },
-    "/v1/chatbots/{typebotId}/publish": {
+    "/v1/chatbots/{buildchatbotId}/publish": {
       "post": {
-        "operationId": "typebot-publishTypebot",
+        "operationId": "buildchatbot-publishBuildchatbot",
         "summary": "Publish a chatbot",
         "tags": ["Build Chatbot"],
         "security": [
@@ -6778,11 +6778,11 @@
         "parameters": [
           {
             "in": "path",
-            "name": "typebotId",
-            "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)",
+            "name": "buildchatbotId",
+            "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-buildchatbotid)",
             "schema": {
               "type": "string",
-              "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)"
+              "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-buildchatbotid)"
             },
             "required": true
           }
@@ -6848,9 +6848,9 @@
         }
       }
     },
-    "/v1/chatbots/{typebotId}/unpublish": {
+    "/v1/chatbots/{buildchatbotId}/unpublish": {
       "post": {
-        "operationId": "typebot-unpublishTypebot",
+        "operationId": "buildchatbot-unpublishBuildchatbot",
         "summary": "Unpublish a chatbot",
         "tags": ["Build Chatbot"],
         "security": [
@@ -6861,11 +6861,11 @@
         "parameters": [
           {
             "in": "path",
-            "name": "typebotId",
-            "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)",
+            "name": "buildchatbotId",
+            "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-buildchatbotid)",
             "schema": {
               "type": "string",
-              "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)"
+              "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-buildchatbotid)"
             },
             "required": true
           }
@@ -6933,7 +6933,7 @@
     },
     "/v1/chatbots/import": {
       "post": {
-        "operationId": "typebot-importTypebot",
+        "operationId": "buildchatbot-importBuildchatbot",
         "summary": "Import a chatbot",
         "tags": ["Build Chatbot"],
         "security": [
@@ -6952,7 +6952,7 @@
                     "type": "string",
                     "description": "[Where to find my workspace ID?](../how-to#how-to-find-my-workspaceid)"
                   },
-                  "typebot": {
+                  "buildchatbot": {
                     "oneOf": [
                       {
                         "type": "object",
@@ -7124,7 +7124,7 @@
                           "icon",
                           "folderId"
                         ],
-                        "title": "Typebot V6"
+                        "title": "Buildchatbot V6"
                       },
                       {
                         "type": "object",
@@ -7703,12 +7703,12 @@
                                           },
                                           "type": {
                                             "type": "string",
-                                            "enum": ["Typebot link"]
+                                            "enum": ["Buildchatbot link"]
                                           },
                                           "options": {
                                             "type": "object",
                                             "properties": {
-                                              "typebotId": {
+                                              "buildchatbotId": {
                                                 "type": "string"
                                               },
                                               "groupId": {
@@ -9474,12 +9474,12 @@
                           "icon",
                           "folderId"
                         ],
-                        "title": "Typebot V5"
+                        "title": "Buildchatbot V5"
                       }
                     ]
                   }
                 },
-                "required": ["workspaceId", "typebot"]
+                "required": ["workspaceId", "buildchatbot"]
               }
             }
           }
@@ -9492,11 +9492,11 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "typebot": {
-                      "$ref": "#/components/schemas/typebotV6"
+                    "buildchatbot": {
+                      "$ref": "#/components/schemas/buildchatbotV6"
                     }
                   },
-                  "required": ["typebot"]
+                  "required": ["buildchatbot"]
                 }
               }
             }
@@ -9544,7 +9544,7 @@
         }
       }
     },
-    "/v1/chatbots/{typebotId}/webhookBlocks": {
+    "/v1/chatbots/{buildchatbotId}/webhookBlocks": {
       "get": {
         "operationId": "webhook-listWebhookBlocks",
         "summary": "List webhook blocks",
@@ -9558,7 +9558,7 @@
         "parameters": [
           {
             "in": "path",
-            "name": "typebotId",
+            "name": "buildchatbotId",
             "schema": {
               "type": "string"
             },
@@ -9654,7 +9654,7 @@
         }
       }
     },
-    "/v1/chatbots/{typebotId}/webhookBlocks/{blockId}/getResultExample": {
+    "/v1/chatbots/{buildchatbotId}/webhookBlocks/{blockId}/getResultExample": {
       "get": {
         "operationId": "webhook-getResultExample",
         "summary": "Get result example",
@@ -9668,7 +9668,7 @@
         "parameters": [
           {
             "in": "path",
-            "name": "typebotId",
+            "name": "buildchatbotId",
             "schema": {
               "type": "string"
             },
@@ -9755,7 +9755,7 @@
         }
       }
     },
-    "/v1/chatbots/{typebotId}/webhookBlocks/{blockId}/subscribe": {
+    "/v1/chatbots/{buildchatbotId}/webhookBlocks/{blockId}/subscribe": {
       "post": {
         "operationId": "webhook-subscribeWebhook",
         "summary": "Subscribe to webhook block",
@@ -9768,7 +9768,7 @@
         "parameters": [
           {
             "in": "path",
-            "name": "typebotId",
+            "name": "buildchatbotId",
             "schema": {
               "type": "string"
             },
@@ -9863,7 +9863,7 @@
         }
       }
     },
-    "/v1/chatbots/{typebotId}/webhookBlocks/{blockId}/unsubscribe": {
+    "/v1/chatbots/{buildchatbotId}/webhookBlocks/{blockId}/unsubscribe": {
       "post": {
         "operationId": "webhook-unsubscribeWebhook",
         "summary": "Unsubscribe from webhook block",
@@ -9876,7 +9876,7 @@
         "parameters": [
           {
             "in": "path",
-            "name": "typebotId",
+            "name": "buildchatbotId",
             "schema": {
               "type": "string"
             },
@@ -9955,7 +9955,7 @@
         }
       }
     },
-    "/v1/chatbots/{typebotId}/results": {
+    "/v1/chatbots/{buildchatbotId}/results": {
       "get": {
         "operationId": "results-getResults",
         "summary": "List results ordered by descending creation date",
@@ -9968,11 +9968,11 @@
         "parameters": [
           {
             "in": "path",
-            "name": "typebotId",
-            "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)",
+            "name": "buildchatbotId",
+            "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-buildchatbotid)",
             "schema": {
               "type": "string",
-              "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)"
+              "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-buildchatbotid)"
             },
             "required": true
           },
@@ -10037,7 +10037,7 @@
                           "createdAt": {
                             "type": "string"
                           },
-                          "typebotId": {
+                          "buildchatbotId": {
                             "type": "string"
                           },
                           "variables": {
@@ -10106,7 +10106,7 @@
                         "required": [
                           "id",
                           "createdAt",
-                          "typebotId",
+                          "buildchatbotId",
                           "variables",
                           "isCompleted",
                           "hasStarted",
@@ -10190,11 +10190,11 @@
         "parameters": [
           {
             "in": "path",
-            "name": "typebotId",
-            "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)",
+            "name": "buildchatbotId",
+            "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-buildchatbotid)",
             "schema": {
               "type": "string",
-              "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)"
+              "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-buildchatbotid)"
             },
             "required": true
           },
@@ -10270,7 +10270,7 @@
         }
       }
     },
-    "/v1/chatbots/{typebotId}/results/{resultId}": {
+    "/v1/chatbots/{buildchatbotId}/results/{resultId}": {
       "get": {
         "operationId": "results-getResult",
         "summary": "Get result by id",
@@ -10283,11 +10283,11 @@
         "parameters": [
           {
             "in": "path",
-            "name": "typebotId",
-            "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)",
+            "name": "buildchatbotId",
+            "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-buildchatbotid)",
             "schema": {
               "type": "string",
-              "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)"
+              "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-buildchatbotid)"
             },
             "required": true
           },
@@ -10319,7 +10319,7 @@
                         "createdAt": {
                           "type": "string"
                         },
-                        "typebotId": {
+                        "buildchatbotId": {
                           "type": "string"
                         },
                         "variables": {
@@ -10388,7 +10388,7 @@
                       "required": [
                         "id",
                         "createdAt",
-                        "typebotId",
+                        "buildchatbotId",
                         "variables",
                         "isCompleted",
                         "hasStarted",
@@ -10456,7 +10456,7 @@
         }
       }
     },
-    "/v1/chatbots/{typebotId}/results/{resultId}/logs": {
+    "/v1/chatbots/{buildchatbotId}/results/{resultId}/logs": {
       "get": {
         "operationId": "results-getResultLogs",
         "summary": "List result logs",
@@ -10469,11 +10469,11 @@
         "parameters": [
           {
             "in": "path",
-            "name": "typebotId",
-            "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)",
+            "name": "buildchatbotId",
+            "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-buildchatbotid)",
             "schema": {
               "type": "string",
-              "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)"
+              "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-buildchatbotid)"
             },
             "required": true
           },
@@ -12373,7 +12373,7 @@
         }
       }
     },
-    "/v1/chatbots/{typebotId}/collaborators": {
+    "/v1/chatbots/{buildchatbotId}/collaborators": {
       "get": {
         "operationId": "collaborators-getCollaborators",
         "summary": "Get collaborators",
@@ -12386,7 +12386,7 @@
         "parameters": [
           {
             "in": "path",
-            "name": "typebotId",
+            "name": "buildchatbotId",
             "schema": {
               "type": "string"
             },
@@ -12413,7 +12413,7 @@
                           "userId": {
                             "type": "string"
                           },
-                          "typebotId": {
+                          "buildchatbotId": {
                             "type": "string"
                           },
                           "createdAt": {
@@ -12426,7 +12426,7 @@
                         "required": [
                           "type",
                           "userId",
-                          "typebotId",
+                          "buildchatbotId",
                           "createdAt",
                           "updatedAt"
                         ]
@@ -12962,7 +12962,7 @@
         }
       }
     },
-    "/v1/chatbots/{typebotId}/whatsapp/start-preview": {
+    "/v1/chatbots/{buildchatbotId}/whatsapp/start-preview": {
       "post": {
         "operationId": "whatsApp-startWhatsAppPreview",
         "summary": "Start preview",
@@ -12975,7 +12975,7 @@
         "parameters": [
           {
             "in": "path",
-            "name": "typebotId",
+            "name": "buildchatbotId",
             "schema": {
               "type": "string"
             },
@@ -15472,12 +15472,12 @@
               },
               "type": {
                 "type": "string",
-                "enum": ["Typebot link"]
+                "enum": ["Buildchatbot link"]
               },
               "options": {
                 "type": "object",
                 "properties": {
-                  "typebotId": {
+                  "buildchatbotId": {
                     "type": "string"
                   },
                   "groupId": {
@@ -19775,7 +19775,7 @@
         },
         "title": "Settings"
       },
-      "typebotV6": {
+      "buildchatbotV6": {
         "type": "object",
         "properties": {
           "version": {
@@ -19987,9 +19987,9 @@
           "whatsAppCredentialsId",
           "riskLevel"
         ],
-        "title": "Typebot V6"
+        "title": "Buildchatbot V6"
       },
-      "typebotV5": {
+      "buildchatbotV5": {
         "type": "object",
         "properties": {
           "version": {
@@ -20563,12 +20563,12 @@
                           },
                           "type": {
                             "type": "string",
-                            "enum": ["Typebot link"]
+                            "enum": ["Buildchatbot link"]
                           },
                           "options": {
                             "type": "object",
                             "properties": {
-                              "typebotId": {
+                              "buildchatbotId": {
                                 "type": "string"
                               },
                               "groupId": {
@@ -22331,9 +22331,9 @@
           "whatsAppCredentialsId",
           "riskLevel"
         ],
-        "title": "Typebot V5"
+        "title": "Buildchatbot V5"
       },
-      "publicTypebotV6": {
+      "publicBuildchatbotV6": {
         "type": "object",
         "properties": {
           "id": {
@@ -22349,7 +22349,7 @@
           "updatedAt": {
             "type": "string"
           },
-          "typebotId": {
+          "buildchatbotId": {
             "type": "string"
           },
           "groups": {
@@ -22464,7 +22464,7 @@
           "version",
           "createdAt",
           "updatedAt",
-          "typebotId",
+          "buildchatbotId",
           "groups",
           "events",
           "edges",
@@ -22472,9 +22472,9 @@
           "theme",
           "settings"
         ],
-        "title": "Public Typebot V6"
+        "title": "Public Buildchatbot V6"
       },
-      "publicTypebotV5": {
+      "publicBuildchatbotV5": {
         "type": "object",
         "properties": {
           "id": {
@@ -22490,7 +22490,7 @@
           "updatedAt": {
             "type": "string"
           },
-          "typebotId": {
+          "buildchatbotId": {
             "type": "string"
           },
           "groups": {
@@ -23051,12 +23051,12 @@
                           },
                           "type": {
                             "type": "string",
-                            "enum": ["Typebot link"]
+                            "enum": ["Buildchatbot link"]
                           },
                           "options": {
                             "type": "object",
                             "properties": {
-                              "typebotId": {
+                              "buildchatbotId": {
                                 "type": "string"
                               },
                               "groupId": {
@@ -24735,7 +24735,7 @@
           "version",
           "createdAt",
           "updatedAt",
-          "typebotId",
+          "buildchatbotId",
           "groups",
           "events",
           "edges",
@@ -24743,7 +24743,7 @@
           "theme",
           "settings"
         ],
-        "title": "Public Typebot V5"
+        "title": "Public Buildchatbot V5"
       }
     }
   }

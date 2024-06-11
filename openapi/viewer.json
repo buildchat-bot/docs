@@ -40,24 +40,24 @@
                       {
                         "type": "object",
                         "properties": {
-                          "typebot": {
+                          "buildchatbot": {
                             "anyOf": [
                               {
                                 "oneOf": [
                                   {
-                                    "$ref": "#/components/schemas/typebotV5"
+                                    "$ref": "#/components/schemas/buildchatbotV5"
                                   },
                                   {
-                                    "$ref": "#/components/schemas/typebotV6"
+                                    "$ref": "#/components/schemas/buildchatbotV6"
                                   }
                                 ],
                                 "discriminator": {
                                   "propertyName": "version",
                                   "mapping": {
-                                    "3": "#/components/schemas/typebotV5",
-                                    "4": "#/components/schemas/typebotV5",
-                                    "5": "#/components/schemas/typebotV5",
-                                    "6": "#/components/schemas/typebotV6"
+                                    "3": "#/components/schemas/buildchatbotV5",
+                                    "4": "#/components/schemas/buildchatbotV5",
+                                    "5": "#/components/schemas/buildchatbotV5",
+                                    "6": "#/components/schemas/buildchatbotV6"
                                   }
                                 }
                               },
@@ -65,7 +65,7 @@
                                 "type": "string"
                               }
                             ],
-                            "description": "Either a Chatbot ID or a Chatbot object. If you provide a Chatbot object, it will be executed in preview mode. ([How can I find my typebot ID?](https://docs.buildchat.bot/api-reference#how-to-find-my-typebotid))."
+                            "description": "Either a Chatbot ID or a Chatbot object. If you provide a Chatbot object, it will be executed in preview mode. ([How can I find my buildchatbot ID?](https://docs.buildchat.bot/api-reference#how-to-find-my-buildchatbotid))."
                           },
                           "isPreview": {
                             "type": "boolean",
@@ -89,7 +89,7 @@
                             "description": "If set to `true`, it will only register the session and not start the chat. This is used for other chat platform integration as it can require a session to be registered before sending the first message."
                           }
                         },
-                        "required": ["typebot"]
+                        "required": ["buildchatbot"]
                       },
                       {
                         "anyOf": [
@@ -409,7 +409,7 @@
                     "sessionId": {
                       "type": "string"
                     },
-                    "typebot": {
+                    "buildchatbot": {
                       "type": "object",
                       "properties": {
                         "id": {
@@ -528,24 +528,24 @@
                       {
                         "type": "object",
                         "properties": {
-                          "typebot": {
+                          "buildchatbot": {
                             "anyOf": [
                               {
                                 "oneOf": [
                                   {
-                                    "$ref": "#/components/schemas/typebotV5"
+                                    "$ref": "#/components/schemas/buildchatbotV5"
                                   },
                                   {
-                                    "$ref": "#/components/schemas/typebotV6"
+                                    "$ref": "#/components/schemas/buildchatbotV6"
                                   }
                                 ],
                                 "discriminator": {
                                   "propertyName": "version",
                                   "mapping": {
-                                    "3": "#/components/schemas/typebotV5",
-                                    "4": "#/components/schemas/typebotV5",
-                                    "5": "#/components/schemas/typebotV5",
-                                    "6": "#/components/schemas/typebotV6"
+                                    "3": "#/components/schemas/buildchatbotV5",
+                                    "4": "#/components/schemas/buildchatbotV5",
+                                    "5": "#/components/schemas/buildchatbotV5",
+                                    "6": "#/components/schemas/buildchatbotV6"
                                   }
                                 }
                               },
@@ -553,7 +553,7 @@
                                 "type": "string"
                               }
                             ],
-                            "description": "Either a Chatbot ID or a Chatbot object. If you provide a Chatbot object, it will be executed in preview mode. ([How can I find my typebot ID?](https://docs.buildchat.bot/api-reference#how-to-find-my-typebotid))."
+                            "description": "Either a Chatbot ID or a Chatbot object. If you provide a Chatbot object, it will be executed in preview mode. ([How can I find my buildchatbot ID?](https://docs.buildchat.bot/api-reference#how-to-find-my-buildchatbotid))."
                           },
                           "isPreview": {
                             "type": "boolean",
@@ -577,7 +577,7 @@
                             "description": "If set to `true`, it will only register the session and not start the chat. This is used for other chat platform integration as it can require a session to be registered before sending the first message."
                           }
                         },
-                        "required": ["typebot"]
+                        "required": ["buildchatbot"]
                       },
                       {
                         "anyOf": [
@@ -897,7 +897,7 @@
                     "sessionId": {
                       "type": "string"
                     },
-                    "typebot": {
+                    "buildchatbot": {
                       "type": "object",
                       "properties": {
                         "id": {
@@ -1064,7 +1064,7 @@
                     "resultId": {
                       "type": "string"
                     },
-                    "typebot": {
+                    "buildchatbot": {
                       "type": "object",
                       "properties": {
                         "id": {
@@ -1336,7 +1336,7 @@
                       "description": "If progress bar is enabled, this field will return a number between 0 and 100 indicating the current progress based on the longest remaining path of the flow."
                     }
                   },
-                  "required": ["sessionId", "typebot", "messages"]
+                  "required": ["sessionId", "buildchatbot", "messages"]
                 }
               }
             }
@@ -1693,7 +1693,7 @@
         }
       }
     },
-    "/v1/chatbots/{typebotId}/preview/startChat": {
+    "/v1/chatbots/{buildchatbotId}/preview/startChat": {
       "post": {
         "operationId": "startChatPreview",
         "summary": "Start preview chat",
@@ -1701,11 +1701,11 @@
         "parameters": [
           {
             "in": "path",
-            "name": "typebotId",
-            "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)",
+            "name": "buildchatbotId",
+            "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-buildchatbotid)",
             "schema": {
               "type": "string",
-              "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-typebotid)"
+              "description": "[Where to find my bot's ID?](../how-to#how-to-find-my-buildchatbotid)"
             },
             "required": true
           }
@@ -1729,22 +1729,22 @@
                     "description": "If set to `true`, it will only register the session and not start the bot. This is used for 3rd party chat platforms as it can require a session to be registered before sending the first message.",
                     "default": false
                   },
-                  "typebot": {
+                  "buildchatbot": {
                     "oneOf": [
                       {
-                        "$ref": "#/components/schemas/typebotV5"
+                        "$ref": "#/components/schemas/buildchatbotV5"
                       },
                       {
-                        "$ref": "#/components/schemas/typebotV6"
+                        "$ref": "#/components/schemas/buildchatbotV6"
                       }
                     ],
                     "discriminator": {
                       "propertyName": "version",
                       "mapping": {
-                        "3": "#/components/schemas/typebotV5",
-                        "4": "#/components/schemas/typebotV5",
-                        "5": "#/components/schemas/typebotV5",
-                        "6": "#/components/schemas/typebotV6"
+                        "3": "#/components/schemas/buildchatbotV5",
+                        "4": "#/components/schemas/buildchatbotV5",
+                        "5": "#/components/schemas/buildchatbotV5",
+                        "6": "#/components/schemas/buildchatbotV6"
                       }
                     },
                     "description": "If set, it will override the chatbot that is used to start the chat."
@@ -1814,7 +1814,7 @@
                       "type": "string",
                       "description": "To save and use for /continueChat requests."
                     },
-                    "typebot": {
+                    "buildchatbot": {
                       "type": "object",
                       "properties": {
                         "id": {
@@ -2086,7 +2086,7 @@
                       "description": "If progress bar is enabled, this field will return a number between 0 and 100 indicating the current progress based on the longest remaining path of the flow."
                     }
                   },
-                  "required": ["sessionId", "typebot", "messages"]
+                  "required": ["sessionId", "buildchatbot", "messages"]
                 }
               }
             }
@@ -2114,7 +2114,7 @@
         }
       }
     },
-    "/v1/chatbots/{typebotId}/blocks/{blockId}/storage/upload-url": {
+    "/v1/chatbots/{buildchatbotId}/blocks/{blockId}/storage/upload-url": {
       "get": {
         "operationId": "getUploadUrl",
         "summary": "Get upload URL for a file",
@@ -2124,7 +2124,7 @@
         "parameters": [
           {
             "in": "path",
-            "name": "typebotId",
+            "name": "buildchatbotId",
             "schema": {
               "type": "string"
             },
@@ -2224,7 +2224,7 @@
                       {
                         "type": "object",
                         "properties": {
-                          "typebotId": {
+                          "buildchatbotId": {
                             "type": "string"
                           },
                           "blockId": {
@@ -2238,7 +2238,7 @@
                           }
                         },
                         "required": [
-                          "typebotId",
+                          "buildchatbotId",
                           "blockId",
                           "resultId",
                           "fileName"
@@ -2314,9 +2314,9 @@
         }
       }
     },
-    "/v1/sessions/{sessionId}/updateTypebot": {
+    "/v1/sessions/{sessionId}/updateBuildchatbot": {
       "post": {
-        "operationId": "updateTypebotInSession",
+        "operationId": "updateBuildchatbotInSession",
         "summary": "Update chatbot in session",
         "description": "Update chat session with latest chatbot modifications. This is useful when you want to update the chatbot in an ongoing session after making changes to it.",
         "security": [
@@ -2985,7 +2985,7 @@
       }
     },
     "schemas": {
-      "typebotV5": {
+      "buildchatbotV5": {
         "type": "object",
         "properties": {
           "version": {
@@ -3553,12 +3553,12 @@
                           },
                           "type": {
                             "type": "string",
-                            "enum": ["Typebot link"]
+                            "enum": ["Buildchatbot link"]
                           },
                           "options": {
                             "type": "object",
                             "properties": {
-                              "typebotId": {
+                              "buildchatbotId": {
                                 "type": "string"
                               },
                               "groupId": {
@@ -5242,7 +5242,7 @@
           "settings",
           "theme"
         ],
-        "title": "Typebot V5"
+        "title": "Buildchatbot V5"
       },
       "textInput": {
         "type": "object",
@@ -6521,7 +6521,7 @@
         },
         "title": "Theme"
       },
-      "typebotV6": {
+      "buildchatbotV6": {
         "type": "object",
         "properties": {
           "version": {
@@ -6648,7 +6648,7 @@
           "settings",
           "theme"
         ],
-        "title": "Typebot V6"
+        "title": "Buildchatbot V6"
       },
       "groupV6": {
         "type": "object",
@@ -7186,12 +7186,12 @@
               },
               "type": {
                 "type": "string",
-                "enum": ["Typebot link"]
+                "enum": ["Buildchatbot link"]
               },
               "options": {
                 "type": "object",
                 "properties": {
-                  "typebotId": {
+                  "buildchatbotId": {
                     "type": "string"
                   },
                   "groupId": {

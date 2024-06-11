@@ -13,7 +13,7 @@ There, you can change the container dimensions. Here is a code example:
   import Chatbot from 'https://cdn.jsdelivr.net/gh/buildchat-bot/embeds@v1.1/js/web.js'
 
   Chatbot.initStandard({
-    typebot: 'my-chatbot',
+    buildchatbot: 'my-chatbot',
   })
 </script>
 
@@ -32,12 +32,12 @@ If you have different bots on the same page you will have to make them distinct 
 
   Chatbot.initStandard({
     id: 'bot1'
-    typebot: 'my-chatbot',
+    buildchatbot: 'my-chatbot',
   })
 
   Chatbot.initStandard({
     id: 'bot2'
-    typebot: 'my-chatbot-2',
+    buildchatbot: 'my-chatbot-2',
   })
 </script>
 
@@ -63,7 +63,7 @@ Here is an example:
   import Chatbot from 'https://cdn.jsdelivr.net/gh/buildchat-bot/embeds@v1.1/js/web.js'
 
   Chatbot.initPopup({
-    typebot: 'my-chatbot',
+    buildchatbot: 'my-chatbot',
     apiHost: 'http://localhost:3001',
     autoShowDelay: 3000,
   })
@@ -83,7 +83,7 @@ Here is an example:
   import Chatbot from 'https://cdn.jsdelivr.net/gh/buildchat-bot/embeds@v1.1/js/web.js'
 
   Chatbot.initBubble({
-    typebot: 'my-chatbot',
+    buildchatbot: 'my-chatbot',
     previewMessage: {
       message: 'I have a question for you!',
       autoShowDelay: 5000,
@@ -125,7 +125,7 @@ chatbot-bubble::part(preview-message) {
 
 ## Commands
 
-Here are the commands you can use to trigger your embedded typebot:
+Here are the commands you can use to trigger your embedded buildchatbot:
 
 - `Chatbot.open()`: Open popup or bubble
 - `Chatbot.close()`: Close popup or bubble
@@ -158,7 +158,7 @@ If you need to trigger events on your parent website when the user interact with
 
 ```js
 Chatbot.initStandard({
-  typebot: 'my-chatbot',
+  buildchatbot: 'my-chatbot',
   onNewInputBlock: (inputBlock) => {
     console.log('New input block displayed', inputBlock.id)
   },
@@ -180,7 +180,7 @@ You can prefill the bot variable values in your embed code by adding the `prefil
 
 ```js
 Chatbot.initStandard({
-  typebot: 'my-chatbot',
+  buildchatbot: 'my-chatbot',
   prefilledVariables: {
     'Current URL': 'https://my-site/account',
     'User name': 'John Doe',
